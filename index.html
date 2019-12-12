@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Henry Password Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Password Generator</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Generate a Password</h2>
+                <div class="card-text">
+                    <textarea readonly id="password" rows="5" placeholder="Your Secure Password"
+                        aria-label="Generated Password"></textarea>
+                </div>
+                <button id="generate" class="btn btn-danger">Generate Password</button>
+                <button id="copy" class="btn btn-success">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="password.js"></script>
+
+
+</body>
+
+</html>
