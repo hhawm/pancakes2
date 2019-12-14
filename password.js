@@ -42,7 +42,6 @@ btnCopyEl.addEventListener("click", function () {
     document.execCommand("copy");
 });
 
-
 // This will test if length is 8 thru 128
 function userPrompts() {
     pwLength = getLength();
