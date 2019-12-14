@@ -24,26 +24,26 @@ btnCopyEl.addEventListener("click", function () {
 function userPrompts() {
     pwLength = getLength();
     if (pwLength < 0) {
-        alert("INVALID INPUT - Length must be an integer between " + MIN_CHARS + " and " + MAX_CHARS + "!");
+        alert("INVALID. Please choose an integer from 8 to 128 for characters length!");
         return false;
     }
 
     pwChars = getChars();
     if (pwChars === "") {
-        alert("INVALID INPUT - You must select at least 1 character set to use");
+        alert("INVALID. Please choose 1 to 4 character sets!");
         return false;
     }
     return true;
 }
 function getLength() {
-    var lengthInput = prompt("How long should the password be? (" + MIN_CHARS + " - " + MAX_CHARS + " characters)");
+    var lengthInput = prompt("Please choose an integer from 8 to 128 characters length!";
     var length = parseFloat(lengthInput);
 
     if (!Number.isInteger(length)) {
         return -1;
-    } else if (length < MIN_CHARS) {
+    } else if (length < 8) {
         return -1;
-    } else if (length > MAX_CHARS) {
+    } else if (length > 128) {
         return -1;
     }
     return length;
@@ -55,9 +55,6 @@ function getLength() {
         prompt("Password character limit? Pick between 8 and 128 characters.");
     if (pwCharsEl > 128 || pwCharsEl < 8) {
         pwCharsEl = prompt("Not valid. Must be between 8 and 128.");
-    }
-    if (pwCharsEl > 128 || pwCharsEl < 8) {
-        pwCharsEl = prompt("Not valid, AGAIN. Must be between 8 and 128. Last chance, buddy!");
     }
     if (pwCharsEl > 128 || pwCharsEl < 8) {
         location.reload();

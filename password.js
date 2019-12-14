@@ -1,6 +1,4 @@
-/* Constants and character options */
-const MIN_CHARS = 8;
-const MAX_CHARS = 128;
+// Character options
 const CHAR_OPTIONS = [
     {
         description: "SPECIAL characters",
@@ -20,18 +18,16 @@ const CHAR_OPTIONS = [
     },
 ];
 
-
-/* These are temporary elements grabbed by Id from the HTML page */
+// These are temporary elements grabbed by Id from the HTML page
 var txtPasswordEl = document.getElementById("password");
 var btnGenerateEl = document.getElementById("generate");
 var btnCopyEl = document.getElementById("copy");
 
-
-/* Globals */
+// VARs that are changed by input from userPrompts
 var pwLength = -1;
 var pwChars = "";
 
-// When clicked, this button will generate password as long as 
+// This button will generate password as long as userPrompts is returned true
 btnGenerateEl.addEventListener("click", function () {
     if (pwChars !== "" || userPrompts()) {
         var password = createPassword(pwChars, pwLength);
@@ -39,7 +35,7 @@ btnGenerateEl.addEventListener("click", function () {
     }
 });
 
-// When clicked, this button will copy generated password to clipboard
+// This button will copy generated password on HTML page to clipboard
 btnCopyEl.addEventListener("click", function () {
     txtPasswordEl.select();
     txtPasswordEl.setSelectionRange(0, 128);
@@ -47,23 +43,15 @@ btnCopyEl.addEventListener("click", function () {
 });
 
 
-//*********************************
-// SUPPORT FUNCTIONS
-//*********************************
-
-/*
- *  Prompt the user for a password length
- *  Validate the input.
- *  Returns true on success, false otherwise 
- * 
- */
+// This will test if length is 8 thru 128
 function userPrompts() {
     pwLength = getLength();
     if (pwLength < 0) {
-        alert("INVALID INPUT - Length must be an integer between " + MIN_CHARS + " and " + MAX_CHARS + "!");
+        alert("INVALID INPUT - Length must be an integer between 8 and 128!");
         return false;
     }
 
+    // This will test if at least 1 character set is chosen
     pwChars = getChars();
     if (pwChars === "") {
         alert("INVALID INPUT - You must select at least 1 character set to use");
@@ -72,27 +60,23 @@ function userPrompts() {
     return true;
 }
 
-/*
- * Prompt the user for a Password Length and validate the input
- */
+// Prompts user for integer 8 thru 128
 function getLength() {
-    var lengthInput = prompt("How long should the password be? (" + MIN_CHARS + " - " + MAX_CHARS + " characters)");
+    var lengthInput = prompt("Please choose an integer from 8 to 128 for characters)");
     var length = parseFloat(lengthInput);
 
+    // This will test if integer is less than 7 or greater than 128
     if (!Number.isInteger(length)) {
         return -1;
-    } else if (length < MIN_CHARS) {
+    } else if (length < 8) {
         return -1;
-    } else if (length > MAX_CHARS) {
+    } else if (length > 128) {
         return -1;
     }
     return length;
 }
 
-/*
- * Give the user a series of prompt to determine which characters to use
- * Returns a string of characters that can be used in the password
- */
+// Prompts user for 1 to 4 character sets
 function getChars() {
     var chars = "";
 
@@ -105,10 +89,7 @@ function getChars() {
     return chars;
 }
 
-/*
- *  Create a random password string of a specified length from the available characters string
- *  Returns randomly generated string
- */
+// Creates a password from input from prompts
 function createPassword(availableChars, length) {
     var result = "";
     for (var index = 0; index < length; index++) {
@@ -117,17 +98,12 @@ function createPassword(availableChars, length) {
     return result;
 }
 
-/*
- *  Update Page HTML with newly Generated Password and Enable Copy button
- */
+// Displays generated password to HTML page
 function updatePage(password) {
     document.getElementById("password").textContent = password;
-    btnCopyEl.disabled = false;
 }
 
-/*
- *  Return a single random character from a string of available characters
- */
+// Math.floor rounds math.random
 function getRandomChar(availableChars) {
     var index = Math.floor(Math.random() * availableChars.length);
     return availableChars[index];
