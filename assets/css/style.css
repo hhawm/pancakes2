@@ -1,5 +1,6 @@
 h1, h2{
     text-align: center;
+    padding: 1rem;
 }
 
 #password {
@@ -18,8 +19,7 @@ h1, h2{
 }
 
 @media screen and (max-width: 640px) {
-    #generate,
-    #copy {
+    #generate, #copy {
         float: none;
         width: 100%;
         padding: 1rem;

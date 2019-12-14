@@ -79,9 +79,9 @@ function getLength() {
 function getChars() {
     var chars = "";
     for (var index = 0; index < CHAR_OPTIONS.length; index++) {
-        var charSetEl = CHAR_OPTIONS[index];
-        if (confirm("Do you want " + charSetEl.description)) {
-            chars += charSetEl.charSet;
+        var fullCharSetEl = CHAR_OPTIONS[index];
+        if (confirm("Do you want " + fullCharSetEl.description)) {
+            chars += fullCharSetEl.charSet;
         }
     }
     return chars;
