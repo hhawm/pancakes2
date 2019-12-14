@@ -12,10 +12,14 @@ h1, h2{
 
 #generate {
      float: left;
+     padding: 1rem;
+     margin: 1rem; 
 }
 
 #copy {
     float: right;
+    padding: 1rem;
+    margin: 1rem; 
 }
 
 @media screen and (max-width: 640px) {

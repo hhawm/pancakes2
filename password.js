@@ -1,4 +1,4 @@
-// Character options
+// Character options set in CONSTANTS
 const CHAR_OPTIONS = [
     {
         description: "SPECIAL characters?",
@@ -18,7 +18,7 @@ const CHAR_OPTIONS = [
     },
 ];
 
-// These are temporary elements grabbed by Id from the HTML page
+// Setting temporary elements grabbed by Id from the HTML page
 var txtPasswordEl = document.getElementById("password");
 var btnGenerateEl = document.getElementById("generate");
 var btnCopyEl = document.getElementById("copy");
@@ -27,19 +27,12 @@ var btnCopyEl = document.getElementById("copy");
 var pwLength = -1;
 var pwChars = "";
 
-// This button will generate password as long as userPrompts is returned true
+// THIS BUTTON STARTS EVERYTHING! Will generate password as long as userPrompts is returned true
 btnGenerateEl.addEventListener("click", function () {
     if (pwChars !== "" || userPrompts()) {
         var password = createPassword(pwChars, pwLength);
         updatePage(password);
     }
-});
-
-// This button will copy generated password on HTML page to clipboard
-btnCopyEl.addEventListener("click", function () {
-    txtPasswordEl.select();
-    txtPasswordEl.setSelectionRange(0, 128);
-    document.execCommand("copy");
 });
 
 // This will test if length is 8 thru 128
@@ -61,8 +54,9 @@ function userPrompts() {
 
 // Prompts user for integer 8 thru 128
 function getLength() {
-    var lengthInput = prompt("Please choose an integer from 8 to 128 for characters)");
+    var lengthInput = prompt("Please choose an integer from 8 to 128 for characters");
     var length = parseFloat(lengthInput);
+    console.log(lengthInput);
 
     // This will test if integer is less than 7 or greater than 128
     if (!Number.isInteger(length)) {
@@ -75,7 +69,7 @@ function getLength() {
     return length;
 }
 
-// Prompts user for 1 to 4 character sets
+// Prompts user for 1 to 4 character sets from CONSTANTS above then creates one LONG STRING of characters
 function getChars() {
     var chars = "";
     for (var index = 0; index < CHAR_OPTIONS.length; index++) {
@@ -84,6 +78,7 @@ function getChars() {
             chars += fullCharSetEl.charSet;
         }
     }
+    console.log(chars);
     return chars;
 }
 
@@ -99,10 +94,20 @@ function createPassword(availableChars, length) {
 // Displays generated password to HTML page
 function updatePage(password) {
     document.getElementById("password").textContent = password;
+    console.log(password);
 }
 
-// Math.floor rounds math.random
+// Math.floor rounds the integer down from (math.random * the number of character chosen)
 function getRandomChar(availableChars) {
     var index = Math.floor(Math.random() * availableChars.length);
+    console.log(index);
     return availableChars[index];
 }
+
+// LASTLY, this button will copy generated password on HTML page to clipboard
+btnCopyEl.addEventListener("click", function () {
+    txtPasswordEl.select();
+    txtPasswordEl.setSelectionRange(0, 128);
+    document.execCommand("copy");
+
+});
