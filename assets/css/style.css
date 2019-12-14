@@ -1,7 +1,21 @@
+h1, h2{
+    text-align: center;
+}
 
+#password {
+    text-align: center;    
+    display: block;
+    width: 100%;
+    padding: 1rem;
+}
 
+#generate {
+     float: left;
+}
 
-
+#copy {
+    float: right;
+}
 
 @media screen and (max-width: 640px) {
     #generate,

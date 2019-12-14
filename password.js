@@ -1,19 +1,19 @@
 // Character options
 const CHAR_OPTIONS = [
     {
-        description: "SPECIAL characters",
+        description: "SPECIAL characters?",
         charSet: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
     },
     {
-        description: "NUMBERS",
+        description: "NUMBERS?",
         charSet: "0123456789"
     },
     {
-        description: "LOWERCASE characters",
+        description: "LOWERCASE characters?",
         charSet: "abcdefghijklmnopqrstuvwxyz"
     },
     {
-        description: "UPPERCASE characters",
+        description: "UPPERCASE characters?",
         charSet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     },
 ];
@@ -78,11 +78,10 @@ function getLength() {
 // Prompts user for 1 to 4 character sets
 function getChars() {
     var chars = "";
-
     for (var index = 0; index < CHAR_OPTIONS.length; index++) {
-        var option = CHAR_OPTIONS[index];
-        if (confirm("Use " + option.description + "?")) {
-            chars += option.charSet;
+        var charSetEl = CHAR_OPTIONS[index];
+        if (confirm("Do you want " + charSetEl.description)) {
+            chars += charSetEl.charSet;
         }
     }
     return chars;
